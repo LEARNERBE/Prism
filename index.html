@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Prism | JEE 2026</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="mesh-bg"></div>
+
+    <div id="welcome-screen" class="overlay">
+        <div class="glass-card">
+            <h1 class="main-stat" style="font-size: 2.2rem;">Prism.</h1>
+            <p class="card-question">Look, Jan 2026 is happening whether you're ready or not. Let's make the grind suck a little less.</p>
+            <div class="button-stack">
+                <button id="entry-btn" class="btn-glass btn-cyan">Get Started</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="app-wrapper" class="app-hidden">
+        <div class="screen-content">
+            <section id="home" class="tab-pane active">
+                <div class="glass-card">
+                    <span class="label">Countdown</span>
+                    <h2 id="countdown" class="main-stat">00:00:00</h2>
+                    <p class="support-info">Days : Hrs : Min : Sec</p>
+                    <p class="card-question">Pressure is high. Stay focused.</p>
+                    <div class="progress-container"><div class="progress-fill" style="width: 85%;"></div></div>
+                </div>
+            </section>
+
+            <section id="timer" class="tab-pane">
+                <div class="glass-card">
+                    <span class="label">Focus</span>
+                    <h2 id="timer-display" class="main-stat">25:00</h2>
+                    <p id="sarcasm-msg" class="card-question">Ready to outperform the competition?</p>
+                    <div class="button-stack">
+                        <button id="start-btn" class="btn-glass btn-cyan">Start</button>
+                        <button id="reset-btn" class="btn-glass">Reset</button>
+                    </div>
+                </div>
+            </section>
+
+            <section id="todo" class="tab-pane">
+                <div class="glass-card">
+                    <span class="label">Daily Goals</span>
+                    <h2 id="progress-percent" class="main-stat" style="font-size: 2rem;">0%</h2>
+                    <div class="input-wrapper">
+                        <input type="text" id="todo-input" placeholder="What's the plan?">
+                        <button id="add-task-btn" class="add-btn">+</button>
+                    </div>
+                    <div id="todo-list" class="scroll-area"></div>
+                </div>
+            </section>
+        </div>
+
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-tab="home">Home</button>
+            <button class="nav-btn" data-tab="timer">Focus</button>
+            <button class="nav-btn" data-tab="todo">Goals</button>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

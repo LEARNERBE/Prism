@@ -1,0 +1,93 @@
+@import url('https://fonts.cdnfonts.com/css/glacial-indifference');
+
+:root {
+    --bg: #07080a;
+    --cyan: #00f2fe;
+    --glass: rgba(255, 255, 255, 0.03);
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+/* Global Reset & Font Force */
+* {
+    margin: 0; padding: 0; box-sizing: border-box;
+    font-family: 'Glacial Indifference', sans-serif !important;
+}
+
+body, html {
+    height: 100dvh; width: 100vw;
+    background: var(--bg); color: white;
+    overflow: hidden; position: fixed;
+}
+
+.mesh-bg {
+    position: fixed; inset: 0; z-index: -1;
+    background: radial-gradient(circle at 15% 15%, rgba(0,242,254,0.07), transparent 45%),
+                radial-gradient(circle at 85% 85%, rgba(0,242,254,0.05), transparent 45%);
+}
+
+/* Overlay & App State Management */
+.overlay {
+    position: fixed; inset: 0; background: var(--bg);
+    z-index: 1000; display: flex; align-items: center; justify-content: center;
+    padding: 25px; transition: opacity 0.5s, visibility 0.5s;
+}
+
+.overlay.fade-out { opacity: 0; visibility: hidden; pointer-events: none; }
+
+#app-wrapper {
+    height: 100dvh; display: flex; flex-direction: column;
+    padding: 20px; transition: opacity 0.5s;
+}
+
+.app-hidden { opacity: 0; pointer-events: none; }
+
+/* Tab System - Fixed Crushing */
+.screen-content {
+    flex: 1; display: grid; /* Grid keeps everything in the same slot without shifting */
+    place-items: center; 
+}
+
+.tab-pane {
+    grid-area: 1 / 1; /* All panes occupy the same grid slot */
+    display: none; width: 100%; max-width: 340px;
+    opacity: 0; transform: translateY(10px);
+}
+
+.tab-pane.active {
+    display: block; opacity: 1; transform: translateY(0);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* UI Elements */
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px);
+    border: 1px solid var(--border); border-radius: 40px;
+    padding: 45px 30px; text-align: center;
+    width: 100%;
+}
+
+.label { display: block; font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--cyan); margin-bottom: 20px; font-weight: bold; }
+.main-stat { font-size: 3rem; font-weight: bold; margin-bottom: 10px; letter-spacing: -1.5px; }
+.card-question { font-size: 1rem; line-height: 1.6; color: rgba(255,255,255,0.7); margin-bottom: 30px; }
+
+/* Buttons & Inputs */
+button { background: none; border: none; cursor: pointer; color: inherit; }
+.btn-glass { width: 100%; padding: 18px; border-radius: 100px; background: rgba(255,255,255,0.05); border: 1px solid var(--border); font-weight: bold; text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.85rem; }
+.btn-cyan { background: var(--cyan); color: #000; border: none; }
+.btn-glass:active { transform: scale(0.97); }
+
+.input-wrapper { display: flex; background: rgba(255,255,255,0.04); padding: 8px 18px; border-radius: 25px; border: 1px solid var(--border); margin-bottom: 25px; align-items: center; }
+input[type="text"] { background: none; border: none; outline: none; color: white; font-size: 0.95rem; flex: 1; padding: 10px 0; }
+.add-btn { color: var(--cyan); font-size: 1.6rem; font-weight: bold; padding-left: 10px; }
+
+/* Navigation */
+.bottom-nav { height: 72px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 100px; display: flex; justify-content: space-around; align-items: center; backdrop-filter: blur(15px); margin-top: auto; }
+.nav-btn { color: rgba(255,255,255,0.3); font-size: 10px; font-weight: bold; text-transform: uppercase; }
+.nav-btn.active { color: var(--cyan); }
+
+/* Progress & Lists */
+.progress-container { background: rgba(255,255,255,0.08); height: 5px; border-radius: 10px; margin-top: 10px; }
+.progress-fill { background: var(--cyan); height: 100%; border-radius: 10px; }
+.scroll-area { max-height: 180px; overflow-y: auto; }
+.todo-item { padding: 12px 5px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 10px; font-size: 0.9rem; text-align: left;}
